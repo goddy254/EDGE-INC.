@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Same head as index.html -->
+  <title>EDGE INC. | portrait Portfolio</title>
+  <style>
+    /* Add to your existing CSS */
+    .portfolio-detail {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 20px;
+    }
+    
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    
+    .gallery-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: zoom-in;
+      transition: transform 0.3s;
+    }
+    
+    .gallery-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .back-button {
+      display: inline-block;
+      margin: 30px 0;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Same header/nav as index.html -->
+  
+  <div class="portfolio-detail">
+    <a href="../index.html#portfolio" class="back-button">← Back to Portfolio</a>
+    
+    <div class="portfolio-header">
+      <h1>Portrait Photography</h1>
+      <p>Capturing personality and emotion</p>
+    </div>
+    
+    <div class="portfolio-gallery">
+      <img src="../images/portrait-1.jpg" alt="Corporate headshot" class="gallery-image">
+      <img src="../images/portrait-2.jpg" alt="Creative portrait" class="gallery-image">
+      <!-- More images -->
+    </div>
+    
+    <div class="portfolio-description">
+      <h2>Portrait Sessions Include:</h2>
+      <ul>
+        <li>1-2 hour outdoor/studio session</li>
+        <li>3 outfit changes</li>
+        <li>10 professionally retouched images</li>
+        <li>Online gallery with all shots</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Same footer as index.html -->
+  
+  <script>
+    // Lightbox functionality for gallery images
+    document.querySelectorAll('.gallery-image').forEach(img => {
+      img.addEventListener('click', () => {
+        const lightbox = document.createElement('div');
+        lightbox.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.9);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          cursor: zoom-out;
+        `;
+        
+        const fullImg = document.createElement('img');
+        fullImg.src = img.src;
+        fullImg.style.maxHeight = '90vh';
+        fullImg.style.maxWidth = '90%';
+        
+        lightbox.appendChild(fullImg);
+        document.body.appendChild(lightbox);
+        
+        lightbox.addEventListener('click', () => lightbox.remove());
+      });
+    });
+  </script>
+  <script>// Add to <script> in each portfolio page
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.href.includes('wedding.html')) {
+        link.classList.add('active');
+      }
+    });</script>
+</body>
+</html>

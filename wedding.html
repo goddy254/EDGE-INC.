@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Same head as index.html -->
+  <title>EDGE INC. | Wedding Portfolio</title>
+  <style>
+    /* Add to your existing CSS */
+    .portfolio-detail {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 20px;
+    }
+    
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    
+    .gallery-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: zoom-in;
+      transition: transform 0.3s;
+    }
+    
+    .gallery-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .back-button {
+      display: inline-block;
+      margin: 30px 0;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Same header/nav as index.html -->
+  
+  <div class="portfolio-detail">
+    <a href="../index.html#portfolio" class="back-button">← Back to Portfolio</a>
+    
+    <div class="portfolio-header">
+      <h1>Wedding Photography</h1>
+      <p>Capturing timeless moments of your special day</p>
+    </div>
+    
+    <div class="portfolio-gallery">
+      <!-- Full-size images -->
+      <img src="../images/wedding-1.jpg" alt="Bride and groom" class="gallery-image">
+      <img src="../images/wedding-2.jpg" alt="Wedding ceremony" class="gallery-image">
+      <img src="../images/wedding-3.jpg" alt="Reception" class="gallery-image">
+      <img src="../images/wedding-4.jpg" alt="Details" class="gallery-image">
+      <img src="../images/wedding-5.jpg" alt="Group photo" class="gallery-image">
+      <img src="../images/wedding-6.jpg" alt="First dance" class="gallery-image">
+    </div>
+    
+    <div class="portfolio-description">
+      <h2>Our Wedding Photography Approach</h2>
+      <p>We specialize in candid moments and artistic compositions that tell your unique love story. Our packages include:</p>
+      <ul>
+        <li>Full-day coverage (10 hours)</li>
+        <li>Second photographer included</li>
+        <li>Online gallery with 500+ edited images</li>
+        <li>Print release and USB delivery</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Same footer as index.html -->
+  
+  <script>
+    // Lightbox functionality for gallery images
+    document.querySelectorAll('.gallery-image').forEach(img => {
+      img.addEventListener('click', () => {
+        const lightbox = document.createElement('div');
+        lightbox.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.9);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          cursor: zoom-out;
+        `;
+        
+        const fullImg = document.createElement('img');
+        fullImg.src = img.src;
+        fullImg.style.maxHeight = '90vh';
+        fullImg.style.maxWidth = '90%';
+        
+        lightbox.appendChild(fullImg);
+        document.body.appendChild(lightbox);
+        
+        lightbox.addEventListener('click', () => lightbox.remove());
+      });
+    });
+  </script>
+  <script>// Add to <script> in each portfolio page
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.href.includes('wedding.html')) {
+        link.classList.add('active');
+      }
+    });</script>
+</body>
+</html>
